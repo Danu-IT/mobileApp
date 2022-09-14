@@ -7,4 +7,4 @@
     <li>Существует станица с выводом изображений в разных расширениях</li>
   </ul>
 
-  <h1>expo-cli start --tunnel</h1>
+  <h3>expo-cli start --tunnel</h3>
