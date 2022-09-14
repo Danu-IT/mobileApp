@@ -1,8 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
 
-export default function ImageContent({photos}) {
-
+export default function ImageContent({data, photos}) {
   return (
     <View style={{marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
       {photos.map((el, index) => {
@@ -13,7 +12,10 @@ export default function ImageContent({photos}) {
               <View style={{flexDirection: 'row', flexWrap: 'wrap',justifyContent: 'space-between'}}>
                 {el.images.map(elImage => {
                   return (
-                    <TouchableOpacity style={{paddingBottom: 2}}>
+                    <TouchableOpacity 
+                    onPressIn={() => data(elImage)}
+                    onPressOut={() => data(null)}
+                    style={{paddingBottom: 2}}>
                       <Image style={{width: 129, height: 150}} source={{uri: elImage}}></Image>
                     </TouchableOpacity>
                   )
@@ -27,14 +29,20 @@ export default function ImageContent({photos}) {
                   <View style={{flexDirection: 'row', flexWrap: 'wrap', width: 261, justifyContent:'space-between'}}>
                     {el.images.slice(0, 4).map(elImage => {
                       return (
-                        <TouchableOpacity style={{paddingBottom: 2}}>
+                        <TouchableOpacity 
+                        onPressIn={() => data(elImage)}
+                        onPressOut={() => data(null)}
+                        style={{paddingBottom: 2}}>
                           <Image style={{width: 129, height: 150}} source={{uri: elImage}}></Image>
                         </TouchableOpacity>
                       )
                     })}
                   </View>
                   <View>
-                    <TouchableOpacity style={{marginLeft: 3}}>
+                    <TouchableOpacity 
+                    onPressIn={() => data(el.images[5])}
+                    onPressOut={() => data(null)}
+                    style={{marginLeft: 3}}>
                       <Image source={{uri: el.images[5]}} style={{width: 129, height: 300,}}></Image>
                     </TouchableOpacity>
                   </View>
@@ -49,13 +57,19 @@ export default function ImageContent({photos}) {
                   flexDirection: 'row',
                   justifyContent: 'space-between'
                 }}>
-                  <TouchableOpacity style={{marginLeft: 2}}>
+                  <TouchableOpacity
+                   onPressIn={() => data(el.images[1])}
+                   onPressOut={() => data(null)}
+                  style={{marginLeft: 2}}>
                     <Image style={{width: 260, height: 300}} source={{uri: el.images[1]}}></Image>
                   </TouchableOpacity>
                   <View style={{flexDirection: 'row', flexWrap: 'wrap', width: 130, justifyContent: 'space-between'}}>
                     {el.images.slice(0, 2).map(elImage => {
                       return (
-                        <TouchableOpacity style={{paddingBottom: 2, marginLeft: 2}}>
+                        <TouchableOpacity
+                        onPressIn={() => data(elImage)}
+                        onPressOut={() => data(null)}
+                        style={{paddingBottom: 2, marginLeft: 2}}>
                           <Image source={{uri: elImage}} style={{width: 129, height: 150}}></Image>
                         </TouchableOpacity>
                       )
